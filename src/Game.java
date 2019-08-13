@@ -24,7 +24,7 @@ public class Game extends Canvas implements Runnable,KeyListener{
     public static Player player;
     public static Level level;
 
-
+    //Fenstergröße festlegen , level und Spieler erstellen
     public Game(){
         Dimension dimension = new Dimension(Game.WIDTH, Game.HEIGHT);
         setPreferredSize(dimension);
@@ -32,10 +32,11 @@ public class Game extends Canvas implements Runnable,KeyListener{
         setMaximumSize(dimension);
 
         addKeyListener(this);
-        player = new Player(Game.WIDTH/2,Game.HEIGHT/2);
+        player = new Player(0,0);
         level = new Level();
     }
 
+    //Threat starten
     public synchronized void start(){
         if(isRunning) return;
         isRunning = true;
@@ -45,6 +46,7 @@ public class Game extends Canvas implements Runnable,KeyListener{
 
     }
 
+    //Threat stoppen
     public synchronized void stop(){
         if(!isRunning)return;
         isRunning = false;
@@ -56,14 +58,15 @@ public class Game extends Canvas implements Runnable,KeyListener{
 
     }
 
-    private void tick(){
 
+    //Ein Tick
+    private void tick(){
         player.tick();
         level.tick();
 
     }
 
-
+    //Maps zeichnen
     private  void render(){
         BufferStrategy bs = getBufferStrategy();
         if(bs==null){
@@ -80,6 +83,8 @@ public class Game extends Canvas implements Runnable,KeyListener{
     }
 
 
+
+    //Spielstarten und auf 60 fps festlegen
     @Override
     public void run(){
 
@@ -113,6 +118,7 @@ public class Game extends Canvas implements Runnable,KeyListener{
         stop();
     }
 
+    //Main
     public static void main(String[] args){
         Game game = new Game();
         JFrame frame = new JFrame();
@@ -129,7 +135,7 @@ public class Game extends Canvas implements Runnable,KeyListener{
 
     }
 
-
+//Key Listener
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) player.right = true;

@@ -12,6 +12,8 @@ public class Player extends Rectangle {
         setBounds(x,y,32,32);
     }
 
+
+    //Bewegung pro tick
     public void tick(){
         if(right&& canMove(x+speed,y) )x+=speed;
         if(left && canMove(x-speed,y))x-=speed;
@@ -19,6 +21,7 @@ public class Player extends Rectangle {
         if(up && canMove(x,y-speed))y-=speed;
     }
 
+    //Wandcollision
     private boolean canMove(int nextx, int nexty){
         Rectangle bounds = new Rectangle(nextx, nexty,width,height);
         Level level = Game.level;
@@ -35,6 +38,8 @@ public class Player extends Rectangle {
         return true;
     }
 
+
+    //SPieler zeichnen
     public void render(Graphics g){
         g.setColor(Color.yellow);
         g.fillRect(x,y ,width, height);
