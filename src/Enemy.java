@@ -3,9 +3,9 @@ import java.awt.*;
 public class Enemy extends Rectangle {
 
     public  Enemy(int x, int y){
-            setBounds(x,y,30,30);
+            setBounds(x,y,32,32);
         }
-        public int speed = 3;
+        public int speed = 2;
 
 
 
@@ -20,8 +20,16 @@ public class Enemy extends Rectangle {
     }
 
     private void aggro(){
-        if(Math.abs(Game.player.x-this.x)>200)speed=1; else speed = 3;
-        if(Math.abs(Game.player.y-this.y)>200)speed=1; else speed = 3;;
+        if(Math.abs(Game.player.x-this.x)>200)speed=1;
+        else {
+            speed = 2;
+            if(this.x%2==1)x+=1;
+        }
+        if(Math.abs(Game.player.y-this.y)>200)speed=1;
+        else {
+            speed = 2;
+            if(this.y%2==1)y+=1;
+        }
 
     }
 
@@ -43,7 +51,7 @@ public class Enemy extends Rectangle {
 
         public void render(Graphics g){
             g.setColor(Color.red);
-            g.fillRect(x,y,30,30);
+            g.fillRect(x,y,32,32);
         }
 
 

@@ -5,11 +5,11 @@ public class Player extends Rectangle {
     private static final long serialVersionUID = 1L;
 
     public boolean right,left,up,down;
-    public int speed = 6;
+    public int speed = 4;
     public int health = 3;
 
     public Player(int x, int y){
-        setBounds(x,y,30,30);
+        setBounds(x,y,32,32);
     }
 
     public void tick(){
