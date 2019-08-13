@@ -8,7 +8,7 @@ public class Player extends Rectangle {
     public int speed = 5;
 
     public Player(int x, int y){
-        setBounds(x,y,49,49);
+        setBounds(x,y,25,25);
     }
 
     public void tick(){

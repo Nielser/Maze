@@ -16,7 +16,7 @@ public class Game extends Canvas implements Runnable,KeyListener{
 
     private boolean isRunning = false;
 
-    public static final int WIDTH =1250, HEIGHT=1250;
+    public static final int WIDTH =625, HEIGHT=625;
     public static final String Title="Amazing - Maze";
 
     private Thread thread;
