@@ -24,6 +24,7 @@ public class Game extends Canvas implements Runnable,KeyListener{
     public static Player player;
     public static Level level;
 
+
     public Game(){
         Dimension dimension = new Dimension(Game.WIDTH, Game.HEIGHT);
         setPreferredSize(dimension);
@@ -59,6 +60,7 @@ public class Game extends Canvas implements Runnable,KeyListener{
 
         player.tick();
         level.tick();
+
     }
 
 
@@ -157,6 +159,9 @@ public class Game extends Canvas implements Runnable,KeyListener{
     public void keyTyped(KeyEvent e) {
 
     }
+
+
+
 
 
 }
