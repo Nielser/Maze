@@ -4,7 +4,7 @@ public class Tile extends Rectangle{
 
     public Tile(int x, int y){
 
-        setBounds(x,y,25,25);
+        setBounds(x,y,30,30);
     }
 
     public void render(Graphics g){

@@ -35,13 +35,13 @@ public class Level {
 
                     if (value == 1) {
                         //Tile
-                        tiles[xx][yy] = new Tile(xx * 25, yy * 25);
+                        tiles[xx][yy] = new Tile(xx * 30, yy * 30);
                         //player
                     } else if (value == 2) {
-                        Game.player.x = xx * 25;
-                        Game.player.y = yy * 25;
+                        Game.player.x = xx * 30;
+                        Game.player.y = yy * 30;
                     } else if (value == 3) {
-                        enemies.add(new Enemy(xx * 25, yy * 25));
+                        enemies.add(new Enemy(xx * 30, yy * 30));
                     } else {
                         //Weg
                     }
