@@ -2,6 +2,7 @@ import java.awt.*;
 
 public class Enemy extends Rectangle {
 
+    //Todo Wächter Gegner hinzufügen, Langsamer, aber Stärker
 
     //Gegner mit Start Pixel x,y und einer Höhe und Breite von 32 Pixel und einem Speed von 2
     public  Enemy(int x, int y){
