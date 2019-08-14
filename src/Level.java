@@ -7,9 +7,9 @@ import java.util.ArrayList;
 public class Level {
 
     //Größe des Levels
+    public int blockSize = 32;
     public int width;
     public int height;
-    public int r;
     public Tile[][] tiles;
     public ArrayList<Enemy> enemies;
 
@@ -22,7 +22,7 @@ public class Level {
             char[] pixelChar = levelString.toCharArray();
             //Testausgabe, ob
             System.out.println(pixelChar.length);
-            System.out.println(width*height);
+
             //Umwandlung in in Array
             int[] pixelInt = new int[levelString.length()];
             for (int i = 0; i < levelString.length(); i++) {
@@ -31,7 +31,7 @@ public class Level {
 
             this.width = 25;
             this.height = 25;
-
+            System.out.println(width*height);
             tiles = new Tile[width][height];
 
             //Erstellen einzelner Wand und Gegner blöcke
@@ -41,13 +41,13 @@ public class Level {
 
                     if (value == 1) {
                         //Tile
-                        tiles[xx][yy] = new Tile(xx * 32, yy * 32);
+                        tiles[xx][yy] = new Tile(xx * blockSize, yy * blockSize);
                         //player
                     } else if (value == 2) {
-                        Game.player.x = xx * 32;
-                        Game.player.y = yy * 32;
+                        Game.player.x = xx * blockSize;
+                        Game.player.y = yy * blockSize;
                     } else if (value == 3) {
-                        enemies.add(new Enemy(xx * 32, yy * 32));
+                        enemies.add(new Enemy(xx * blockSize, yy * blockSize));
                     } else {
                         //Weg
                     }
