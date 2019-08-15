@@ -39,6 +39,8 @@ public class Player extends Rectangle {
     }
 
 
+
+
     //SPieler zeichnen
     public void render(Graphics g){
         g.setColor(Color.yellow);
