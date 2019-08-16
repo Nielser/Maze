@@ -96,6 +96,8 @@ public class Game extends Canvas implements Runnable,KeyListener{
         double delta = 0;
         double ns = 1e9/tickSpeed;
 
+
+
         while (isRunning){
             long now = System.nanoTime();
             delta  += (now - lastTime) / ns;

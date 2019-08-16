@@ -1,3 +1,6 @@
+import com.oracle.xmlns.internal.webservices.jaxws_databinding.ExistingAnnotationsType;
+import com.sun.tools.javah.Util;
+
 import java.awt.*;
 
 public class Enemy extends Rectangle {
@@ -8,16 +11,24 @@ public class Enemy extends Rectangle {
     public  Enemy(int x, int y){
             setBounds(x,y,32,32);
         }
+
         public int speed = 2;
+    public int d =1;
 
-
+    // ToDo oberer Enemy Bug und hängt einer Ecke fest
     //Bewegung und aggro pro Tick
     public void tick() {
-        aggro();
-        if (((Game.player.x-this.x)>0)   && cantMove(x + speed, y)) x += speed;
-        if (((Game.player.x-this.x)<0)  && cantMove(x - speed, y)) x -= speed;
-        if (((Game.player.y-this.y)>0)   && cantMove(x, y + speed)) y += speed;
-        if (((Game.player.y-this.y)<0)  && cantMove(x, y - speed)) y -= speed;
+        damage();
+        if(speed>0) aggro();
+        else if(Math.abs(Game.player.x-this.x)>150|Math.abs(Game.player.y-this.y)>150){
+            speed=2;
+            d=1;
+        }
+
+        if (((Game.player.x-this.x)>0)   && cantMove(x + speed, y)) {x += speed;if(speed < 0&&this.x%4==2)x+=2;}
+        if (((Game.player.x-this.x)<0)  && cantMove(x - speed, y)) {x -= speed;if(speed < 0&&this.x%4==2)x-=2;}
+        if (((Game.player.y-this.y)>0)   && cantMove(x, y + speed)) {y += speed;if(speed < 0&&this.y%4==2)y+=2;}
+        if (((Game.player.y-this.y)<0)  && cantMove(x, y - speed)) {y -= speed;if(speed < 0&&this.y%4==2)y-=2;}
     }
 
     //Wenn näher, dann sind Gegner schneller
@@ -52,6 +63,24 @@ public class Enemy extends Rectangle {
         }
 
         return true;
+    }
+
+    //Mobcollision
+    public void damage(){
+        if(d!=0){
+            Rectangle bounds = new Rectangle(x,y,width,height);
+            if (bounds.intersects(Game.player)){
+                System.out.println("Got u");
+                Game.player.health -= d;
+                speed=-4;
+                d=0;
+                System.out.println(Game.player.health);
+                if(Game.player.health==0)Game.player.speed =0;
+
+            }
+        }
+
+
     }
 
 
